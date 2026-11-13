@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wesstyle · Generar imagen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sora:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="horizon" aria-hidden="true"></div>
+  <header class="topbar"><a class="brand" href="./remove-bg.html"><img src="logo.svg" alt="">Wesstyle Studio</a></header>
+
+  <main>
+    <section class="hero">
+      <nav class="switch"><a href="./remove-bg.html">Quitar fondo</a><a href="./upscaler.html">Mejorar imagen</a><a href="./eraser.html">Borrar objetos</a><a class="active" href="./generate.html">Generar imagen</a></nav>
+      <h1>Creá una imagen.</h1>
+      <p class="lead">Describí lo que imaginás y la IA lo genera en segundos.</p>
+    </section>
+
+    <section class="frame" id="app">
+      <div class="frame-glow" aria-hidden="true"></div>
+
+      <div class="panel">
+        <textarea id="prompt" rows="3" maxlength="600" placeholder="Ej: fondo de estudio con pared de ladrillos oscuros y luz cálida, fotografía de producto"></textarea>
+        <div class="models ratios" role="radiogroup" aria-label="Formato">
+          <label class="model"><input type="radio" name="ratio" value="square" checked><span><b>Cuadrado</b><small>1:1</small></span></label>
+          <label class="model"><input type="radio" name="ratio" value="wide"><span><b>Horizontal</b><small>16:9</small></span></label>
+          <label class="model"><input type="radio" name="ratio" value="tall"><span><b>Vertical</b><small>9:16</small></span></label>
+          <label class="model"><input type="radio" name="ratio" value="portrait"><span><b>Retrato</b><small>4:5</small></span></label>
+        </div>
+        <p class="error hidden" id="error"></p>
+        <div class="actions">
+          <button class="pill pill-primary" id="goBtn" type="button">Generar</button>
+        </div>
+
+        <div class="stage checker big result-stage hidden" id="resultStage">
+          <img id="result" alt="Imagen generada">
+          <div class="loader hidden" id="loader"><span></span>Generando…</div>
+        </div>
+        <div class="actions hidden" id="resultActions">
+          <a class="pill pill-primary" id="downloadBtn" download="wesstyle-generada.jpg">Descargar</a>
+          <button class="pill pill-outline" id="againBtn" type="button">Otra variante</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="config.js"></script>
+  <script src="generate.js"></script>
+</body>
+</html>

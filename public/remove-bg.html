@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wesstyle Background Remover</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sora:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="horizon" aria-hidden="true"></div>
+  <header class="topbar"><a class="brand" href="./remove-bg.html"><img src="logo.svg" alt="">Wesstyle Studio</a></header>
+
+  <main>
+    <section class="hero">
+      <nav class="switch"><a class="active" href="./remove-bg.html">Quitar fondo</a><a href="./upscaler.html">Mejorar imagen</a><a href="./eraser.html">Borrar objetos</a><a href="./generate.html">Generar imagen</a></nav>
+      <h1>Quitá el fondo.</h1>
+      <p class="lead">Subí una imagen y obtené un recorte limpio con transparencia.</p>
+    </section>
+
+    <section class="frame" id="app">
+      <div class="frame-glow" aria-hidden="true"></div>
+
+      <div class="panel" id="uploadCard">
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Seleccionar imagen">
+          <input type="file" id="fileInput" accept="image/*" hidden>
+          <h2>Arrastrá una imagen aquí</h2>
+          <p>o hacé clic para seleccionarla · máx. 15 MB</p>
+        </div>
+      </div>
+
+      <div class="panel hidden" id="resultCard">
+        <div class="compare">
+          <figure>
+            <figcaption>Original</figcaption>
+            <div class="stage"><img id="original" alt="Imagen original"></div>
+          </figure>
+          <figure>
+            <figcaption>Sin fondo</figcaption>
+            <div class="stage checker">
+              <img id="result" alt="Resultado sin fondo">
+              <div class="loader hidden" id="loader"><span></span>Procesando…</div>
+            </div>
+          </figure>
+        </div>
+        <p class="error hidden" id="error"></p>
+        <div class="actions">
+          <a class="pill pill-primary hidden" id="downloadBtn" download="wesstyle-sin-fondo.webp">Descargar</a>
+          <button class="pill pill-outline" id="resetBtn" type="button">Nueva imagen</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="config.js"></script>
+  <script src="remove-bg.js"></script>
+</body>
+</html>
+
+

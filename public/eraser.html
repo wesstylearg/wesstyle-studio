@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wesstyle · Borrar objetos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Sora:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="horizon" aria-hidden="true"></div>
+  <header class="topbar"><a class="brand" href="./remove-bg.html"><img src="logo.svg" alt="">Wesstyle Studio</a></header>
+
+  <main>
+    <section class="hero">
+      <nav class="switch"><a href="./remove-bg.html">Quitar fondo</a><a href="./upscaler.html">Mejorar imagen</a><a class="active" href="./eraser.html">Borrar objetos</a><a href="./generate.html">Generar imagen</a></nav>
+      <h1>Borrá lo que sobra.</h1>
+      <p class="lead">Pintá sobre el objeto y la IA reconstruye el fondo.</p>
+    </section>
+
+    <section class="frame" id="app">
+      <div class="frame-glow" aria-hidden="true"></div>
+
+      <div class="panel" id="uploadCard">
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Seleccionar imagen">
+          <input type="file" id="fileInput" accept="image/*" hidden>
+          <h2>Arrastrá una imagen aquí</h2>
+          <p>o hacé clic para seleccionarla · máx. 15 MB</p>
+        </div>
+      </div>
+
+      <div class="panel hidden" id="editCard">
+        <div class="stage paint-stage">
+          <div class="paint-wrap" id="paintWrap">
+            <canvas id="base"></canvas>
+            <canvas id="overlay"></canvas>
+          </div>
+        </div>
+        <div class="toolbar">
+          <label class="brush">Pincel <input type="range" id="brush" min="6" max="120" value="36"></label>
+          <button class="pill pill-outline" id="undoBtn" type="button">Deshacer</button>
+          <button class="pill pill-outline" id="clearBtn" type="button">Limpiar</button>
+        </div>
+        <p class="error hidden" id="editError"></p>
+        <div class="actions">
+          <button class="pill pill-primary" id="goBtn" type="button">Borrar</button>
+          <button class="pill pill-outline" id="cancelBtn" type="button">Cancelar</button>
+        </div>
+      </div>
+
+      <div class="panel hidden" id="resultCard">
+        <div class="stage checker big">
+          <img id="result" alt="Imagen sin el objeto">
+          <div class="loader hidden" id="loader"><span></span>Borrando…</div>
+        </div>
+        <p class="error hidden" id="error"></p>
+        <div class="actions">
+          <a class="pill pill-primary hidden" id="downloadBtn" download="wesstyle-sin-objeto.png">Descargar</a>
+          <button class="pill pill-outline" id="backBtn" type="button">Seguir editando</button>
+          <button class="pill pill-outline" id="resetBtn" type="button">Nueva imagen</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="config.js"></script>
+  <script src="eraser.js"></script>
+</body>
+</html>
